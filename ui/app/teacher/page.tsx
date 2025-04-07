@@ -6,6 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import RestoreIcon from "@mui/icons-material/Restore";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import Paper from "@mui/material/Paper";
@@ -15,7 +16,6 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import { styled } from '@mui/material/styles';
 import Avatar from "@mui/material/Avatar";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Container } from "@mui/material";
 
 function refreshMessages(): MessageExample[] {
