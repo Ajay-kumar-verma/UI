@@ -22,10 +22,6 @@ import {
 import Chance from "chance";
 const chance = new Chance();
 
-const roles = ["Market", "Finance", "Development"];
-const randomRole = () => {
-  return randomArrayItem(roles);
-};
 
 const initialRows = new Array(100).fill(0).map((_) => ({
   id: randomId(),

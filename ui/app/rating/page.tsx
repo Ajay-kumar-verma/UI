@@ -44,7 +44,7 @@ export default function HoverRating() {
   return (
     <Container maxWidth="lg">
       <List>
-        {[1, 2, 3, 4].map((message) => {
+        {[1, 2, 3, 4].map(() => {
           return (
             <Item>
               <Typography component="legend">Controlled</Typography>

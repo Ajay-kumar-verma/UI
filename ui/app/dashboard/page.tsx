@@ -94,7 +94,7 @@ const Skeleton = styled('div')<{ height: number }>(({ theme, height }) => ({
   content: '" "',
 }));
 
-export default function DashboardLayoutBasic(props: any) {
+export default function DashboardLayoutBasic(props:any) {
   const { window } = props;
 
   const router = useDemoRouter('/dashboard');

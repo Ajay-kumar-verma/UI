@@ -2,7 +2,7 @@ export default function RootLayout({
   children,
   user,
   top,
-  drawer
+  drawer,
 }: Readonly<{
   children: React.ReactNode;
   user: React.ReactNode;
@@ -12,12 +12,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-       {drawer}
-       {top}
-        {/* {user} */}
+        {drawer}
+        {top}
+        {user}
         {children}
-        
-        </body>
+      </body>
     </html>
   );
 }
