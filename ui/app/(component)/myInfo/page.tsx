@@ -14,19 +14,22 @@ import Feedback from "../feedback/page";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
-  border: "1px solid rgb(158, 42, 38)",
+  border:`1px solid ${colorize()}`,
   borderRadius: "10px",
   boxShadow: "0 1px 3px rgba(0, 0, 0, 0.2)",
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: "center",
-  color:"rgb(47, 158, 90)",
+  color: "black",
   fontWeight: "bold",
-    ...theme.applyStyles("dark", {
+  ...theme.applyStyles("dark", {
     backgroundColor: "#1A2027",
   }),
- 
 }));
+
+function colorize() {
+ return `#`+ Math.floor(Math.random() * 16777215).toString(16);
+}
 
 export default function ColumnLayoutInsideGrid() {
   return (
@@ -58,9 +61,9 @@ export default function ColumnLayoutInsideGrid() {
                     zIndex: 2,
                   }}
                 >
-                 Open for teaching. 
+                  Open for teaching.
                 </Typography>
-                <Stack direction="row" spacing={2}>
+                <Stack direction="row" spacing={1}>
                   <Item sx={{ height: "120px", boxSizing: "border-box" }}>
                     <Image
                       width={100}
@@ -72,7 +75,7 @@ export default function ColumnLayoutInsideGrid() {
                     <Item>
                       <Button
                         size="small"
-                        variant="outlined"
+                        variant="text"
                         color="primary"
                         startIcon={<PhoneIcon />}
                         href="tel:+918095240976"
