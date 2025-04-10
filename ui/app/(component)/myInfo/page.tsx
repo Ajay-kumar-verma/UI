@@ -14,16 +14,18 @@ import Feedback from "../feedback/page";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
-  border: "2px solid #B0BEC5",
+  border: "1px solid rgb(158, 42, 38)",
   borderRadius: "10px",
   boxShadow: "0 1px 3px rgba(0, 0, 0, 0.2)",
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: "center",
-  color: (theme ?? theme).palette.text.secondary,
-  ...theme.applyStyles("dark", {
+  color:"rgb(47, 158, 90)",
+  fontWeight: "bold",
+    ...theme.applyStyles("dark", {
     backgroundColor: "#1A2027",
   }),
+ 
 }));
 
 export default function ColumnLayoutInsideGrid() {
@@ -38,12 +40,10 @@ export default function ColumnLayoutInsideGrid() {
                 display: "flex",
                 justifyContent: "center", // horizontal center
                 alignItems: "center", // vertical center
-                bgcolor: "#f5f5f5",
               }}
             >
               <Container maxWidth="lg" sx={{ position: "relative" }}>
                 <Typography
-
                   variant="h1"
                   sx={{
                     width: "100%",
@@ -51,7 +51,7 @@ export default function ColumnLayoutInsideGrid() {
                     top: "50%",
                     left: "40%",
                     transform: "translate(-30%, -30%) rotate(-30deg)",
-                    color: "rgba(102, 199, 154, 0.2)",
+                    color: "rgba(87, 71, 231, 0.2)",
                     fontSize: "3em",
                     fontWeight: "bold",
                     pointerEvents: "none",
@@ -119,10 +119,10 @@ export default function ColumnLayoutInsideGrid() {
           <Grid size={4}>
             <Stack spacing={2}>
               <Divider textAlign="center">Fee expectation</Divider>
-              <Item>NC to II: 1000</Item>
-              <Item>III to V: 1500</Item>
-              <Item>VI to VIII: 2000</Item>
-              <Item>IX, X:3000</Item>
+              <Item>NC to II: 1000, Negotial</Item>
+              <Item>III to V: 1500, Negotial</Item>
+              <Item>VI to VIII: 2000, Negotial</Item>
+              <Item>IX, X:3000, Negotial</Item>
             </Stack>
           </Grid>
           <Grid size={4}>
