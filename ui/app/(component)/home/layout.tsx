@@ -14,7 +14,7 @@ export default function RootLayout({
       <body>
         {drawer}
         {top}
-        {user}
+        {/* {user} */}
         {children}
       </body>
     </html>

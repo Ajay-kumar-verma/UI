@@ -12,6 +12,8 @@ import Slide from "@mui/material/Slide";
 import MenuIcon from "@mui/icons-material/Menu";
 import { IconButton } from "@mui/material";
 import { useAppStore } from '../store/useAppStore';
+import Chat from "../../chat/page";
+
 
 interface Props {
   /**
@@ -40,17 +42,18 @@ function HideOnScroll(props: Props) {
 
 export default function HideAppBar(props: Props) {
   
+  const { drawerOpen,navIndex,setDrawerOpen } = useAppStore();
   return (
     <Container>
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar>
-          <ButtonAppBar />
+          <ButtonAppBar drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
         </AppBar>
       </HideOnScroll>
       <Toolbar />
       <Box sx={{ my: 2 }}>
-        {[...new Array(112)]
+        {navIndex ===2?<Chat />: [...new Array(navIndex*5)]
           .map(
             () => `Cras mattis consectetur purus sit amet fermentum.
 Cras justo odio, dapibus ac facilisis in, egestas eget quam.
@@ -63,8 +66,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`
   );
 }
 
-function ButtonAppBar() {
-  const { drawerOpen, setDrawerOpen } = useAppStore();
+function ButtonAppBar({ drawerOpen, setDrawerOpen }: { drawerOpen: boolean; setDrawerOpen: (open: boolean) => void }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
