@@ -11,6 +11,9 @@ import {
   Container,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+
+
 import UserList from "../userList/page";
 import io from "socket.io-client";
 const ENDPOINT = "localhost:2000";
@@ -23,30 +26,8 @@ interface BeautifulChatProps {
 }
 
 console.log("Chat Component is called");
-const initialMessages = [
-  { user: "Alice", text: "Hey there! 👋" },
-  { user: "Bob", text: "Hello Alice! How are you?" },
-  { user: "Alice", text: "I’m good, thanks! Working on a new project." },
-  {
-    user: "Alice",
-    text: "Sure! I’ll share it once I clean up the code a bit. 😅",
-  },
-  { user: "Bob", text: "Haha, no worries. Looking forward to it!" },
-  { user: "Alice", text: "Thanks! What are you working on these days?" },
-  {
-    user: "Bob",
-    text: "Mostly UI work. Playing around with MUI and Tailwind lately.",
-  },
-  {
-    user: "Alice",
-    text: "MUI is awesome for rapid prototyping. Tailwind too, once you get used to it.",
-  },
-  {
-    user: "Bob",
-    text: "Exactly! I just built a dashboard UI in like an hour. 🔥",
-  },
-  { user: "Alice", text: "That’s sick! Send me a screenshot later 😄" },
-];
+const initialMessages: { user: string; text: string }[] = [];
+  
 
 const BeautifulChat = ({
   roomId,
@@ -131,7 +112,7 @@ const BeautifulChat = ({
         }}
       >
         <Stack spacing={2}>
-          {messages.map((msg, i) => {
+          {messages.length ==0 ? <EmptyState message="No messages yet. Start the conversation!" /> : messages.map((msg, i) => {
             const isMe = msg.user === "me";
             return (
               <Box
@@ -188,3 +169,27 @@ const BeautifulChat = ({
 };
 
 export default BeautifulChat;
+
+
+ function EmptyState({ message = "Nothing to display", icon = <ChatBubbleOutlineIcon fontSize="large" /> }) {
+  return (
+    <Box
+      sx={{
+        height: '100%',
+        minHeight: 300,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'grey.500',
+        textAlign: 'center',
+        p: 2,
+      }}
+    >
+      {icon}
+      <Typography variant="h6" sx={{ mt: 1 }}>
+        {message}
+      </Typography>
+    </Box>
+  );
+}
