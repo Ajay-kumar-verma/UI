@@ -53,22 +53,23 @@ const BeautifulChat = ({
   username,
   onUserClick,
 }: BeautifulChatProps) => {
-  const [UsersId, setUsersId] = useState<string[]>([]);
+  const [UsersId, setUsersId] = useState<Record<string, string>>({});
   const [message, setMessage] = useState("");
   const [messages, setMessages] =
   useState<{ user: string; text: string }[]>(initialMessages);
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    socket.on("newuser", (id) => setUsersId((state) => [...state, id]));
-    socket.on("userDisconnect", (id) =>
-      setUsersId((state) => state.filter((user) => user !== id))
-    );
+    socket.on("newuser", (userData) => setUsersId(userData));
+    // socket.on("userDisconnect", (id) =>
+    //   setUsersId((state) => state.filter((user) => user !== id))
+    // );
     socket.on("receiveMessage", (message: { user: string; text: string }) => {
       const { text, user } = message;
       setMessages((prev) => [...prev, { text, user }]);
     });
-
+  
+    socket.emit("myName", username); 
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     return () => {
       socket.off("newuser", (id) => console.log(id));

@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 
 interface UserListProps {
-  users: string[];
+  users: Record<string, string>;
   currentUser: string;
   onUserClick: (user: string) => void;
 }
@@ -49,11 +49,11 @@ const UserList: React.FC<UserListProps> = ({
           👥 Online Users
         </Typography>
         <List dense>
-          {users.map((user, index) => (
+          {Object.keys(users).map((user, index) => (
             <ListItem
               key={index}
               component="button"
-              onClick={() => onUserClick(user)}
+              onClick={() => onUserClick(users[user])}
               sx={{
                 bgcolor: user === currentUser ? "primary.light" : "transparent",
               }}
